@@ -14,6 +14,11 @@ const todoListData = [
 		task: 'Bake Cookies',
 		id: 1528817084358,
 		completed: false
+	},
+	{
+		task: 'Bake Cookies',
+		id: 15288170843585,
+		completed: false
 	}
 ];
 
@@ -44,6 +49,7 @@ class App extends React.Component {
 	addNew = (event) => {
 		event.preventDefault();
 		const newTask = [ ...this.state.todos, { task: this.state.task, id: Date.now(), completes: false } ];
+		localStorage.setItem('todo', JSON.stringify(newTask)); //------Storage---------------------------------------------------
 		this.setState({
 			todos: newTask,
 			task: ''
@@ -66,9 +72,17 @@ class App extends React.Component {
 
 	clearCompleted = (event) => {
 		event.preventDefault();
-		let completed = this.state.todos.filter((item) => item.completed !== true);
-		this.setState({ todos: completed });
+		const completedTasks = this.state.todos.filter((item) => item.completed !== true);
+		localStorage.setItem('todo', JSON.stringify(completedTasks)); //------Storage---------------------------------------------------
+		this.setState({ todos: completedTasks });
 	};
+
+	componentDidMount() {
+		const storedTodo = JSON.parse(localStorage.getItem('todo')); //------Storage---------------------------------------------------
+		if (storedTodo) {
+			this.setState({ todos: storedTodo });
+		}
+	}
 
 	render() {
 		return (
