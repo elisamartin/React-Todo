@@ -1,0 +1,29 @@
+* {
+	font-family: 'Roboto', sans-serif;
+}
+
+.app-container {
+	padding: 10px;
+	width: 200px;
+	border: 2px solid gray;
+	text-align: center;
+	margin: 0 auto;
+}
+
+.todo {
+	line-height: 2.5;
+	border-bottom: 1px solid lightgray;
+}
+
+form {
+	padding: 10px;
+}
+
+button {
+	margin: 10px 0;
+	background-color: lightgray;
+	color: black;
+	border: 1px solid darkgray;
+	border-radius: 25px;
+	padding: 10px 30px;
+}
